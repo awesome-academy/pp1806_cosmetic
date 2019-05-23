@@ -12,7 +12,6 @@ class Transaction extends Model
         'payment_method',
         'payment_info',
         'message',
-        'security',
         'status',
     ];
 }
