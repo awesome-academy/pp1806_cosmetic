@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPhoneFlagInUsersTable extends Migration
+class DeleteFlagInUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddPhoneFlagInUsersTable extends Migration
      */
     public function up() {
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'phone_number', 'flag')) {
-                $table->string('phone_number');
-                $table->integer('flag');
+            if (Schema::hasColumn('users', 'flag')) {
+                $table->dropColumn('flag');
             }
         });
     }
@@ -26,10 +25,9 @@ class AddPhoneFlagInUsersTable extends Migration
      * @return void
      */
     public function down() {
-        Schema::table('users', function(Blueprint $table) {
-            if (Schema::hasColumn('users', 'phone_number', 'flag')) {
-                $table->dropColumn('phone_number');
-                $table->dropColumn('flag');
+        Schema::table('users', function (Blueprint $table) {
+            if (!Schema::hasColumn('users', 'flag')) {
+                $table->integer('flag');
             }
         });
     }
