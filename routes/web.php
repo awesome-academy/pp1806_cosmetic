@@ -27,3 +27,10 @@ Route::group([
     Route::get('/admin/products/{product}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/admin/products/{product}', 'ProductsController@update')->name('products.update');
 });
+Route::middleware('auth')->group(function () {
+    Route::middleware('admin')->group(function () {
+        Route::get('admin/category', 'Admin\CategoryController@index')->name('admin.category.index');
+        Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
+        Route::post('/admin/category', 'Admin\CategoryController@store')->name('admin.category.store');
+    });
+});

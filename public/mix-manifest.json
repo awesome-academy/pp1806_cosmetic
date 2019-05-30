@@ -1,4 +1,13 @@
 {
+    "/js/adminCustome.js": "/js/adminCustome.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/layouts/js/bootstrap.min.js": "/layouts/js/bootstrap.min.js",
+    "/layouts/js/jquery.js": "/layouts/js/jquery.js",
+    "/layouts/js/jquery.scrollUp.min.js": "/layouts/js/jquery.scrollUp.min.js",
+    "/layouts/js/main.js": "/layouts/js/main.js",
+    "/layouts/css/bootstrap.min.css": "/layouts/css/bootstrap.min.css",
+    "/layouts/css/font-awesome.min.css": "/layouts/css/font-awesome.min.css",
+    "/layouts/css/main.css": "/layouts/css/main.css",
+    "/layouts/css/responsive.css": "/layouts/css/responsive.css"
 }

@@ -125,6 +125,21 @@ return [
             ]
         ],
         [
+            'text'    => 'Category Manager',
+            'icon'    => 'book',
+            'submenu' => [
+                [
+                    'text' => 'Category list',
+                    'url'  =>  'admin/category',
+                    'icon' =>  'list',
+                ],
+                [
+                    'text' => 'Add new category',
+                    'url'  => 'admin/category/create',
+                ],
+            ]
+        ],
+        [
             'text'        => 'Pages',
             'url'         => 'admin/pages',
             'icon'        => 'file',
