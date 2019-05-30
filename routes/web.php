@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([
+    'namespace' => 'Admin',
+], function () {
+    Route::get('/admin/products', 'ProductsController@index')->name('products.list');
+    Route::get('/admin/products/create', 'ProductsController@create')->name('products.create');
+    Route::post('/admin/products', 'ProductsController@store')->name('products.store');
+});
