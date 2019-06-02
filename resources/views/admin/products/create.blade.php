@@ -146,6 +146,6 @@
 @stop
 
 @section('js')
-    <script src="../../js/admin_custome.js"></script>
+    <script src="{{ asset('js/admin_custom.js') }}"></script>
 @stop
 

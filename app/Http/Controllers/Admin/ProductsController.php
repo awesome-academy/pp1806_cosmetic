@@ -89,4 +89,31 @@ class ProductsController extends Controller
 
         return $result;
     }
+
+    public function destroy($id) {
+        $product = Product::find($id);
+
+        if (!$product) {
+            $result = [
+                'status' => false,
+                'message' => __('products.not_found'),
+            ];
+        } else {
+            try {
+                $product->delete();
+                $result = [
+                    'status' => true,
+                    'message' => __('products.delete_success'),
+                ];
+            } catch (\Exception $e) {
+                $result = [
+                    'status' => true,
+                    'message' => __('products.delete_fail'),
+                    'error' => $e->getMessage()
+                ];
+            }
+        }
+
+        return response()->json($result);
+    }
 }

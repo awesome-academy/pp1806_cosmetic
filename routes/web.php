@@ -25,4 +25,5 @@ Route::group([
     Route::get('/admin/products', 'ProductsController@index')->name('products.list');
     Route::get('/admin/products/create', 'ProductsController@create')->name('products.create');
     Route::post('/admin/products', 'ProductsController@store')->name('products.store');
+    Route::delete('/admin/products/{product}', 'ProductsController@destroy')->name('products.destroy');
 });
