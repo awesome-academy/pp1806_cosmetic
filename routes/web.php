@@ -26,4 +26,6 @@ Route::group([
     Route::get('/admin/products/create', 'ProductsController@create')->name('products.create');
     Route::post('/admin/products', 'ProductsController@store')->name('products.store');
     Route::delete('/admin/products/{product}', 'ProductsController@destroy')->name('products.destroy');
+    Route::get('/admin/products/{product}/edit', 'ProductsController@edit')->name('products.edit');
+    Route::post('/admin/products/{product}', 'ProductsController@update')->name('products.update');
 });

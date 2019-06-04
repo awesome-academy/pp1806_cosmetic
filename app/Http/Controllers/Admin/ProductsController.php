@@ -25,7 +25,6 @@ class ProductsController extends Controller
     }
 
     public function store(CreateProduct $request) {
-        $validated = $request->validated();
         $data = $request->only([
             'name',
             'category_id',
@@ -115,5 +114,75 @@ class ProductsController extends Controller
         }
 
         return response()->json($result);
+    }
+
+    public function edit($id) {
+        $product = Product::find($id);
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        if (!$product) {
+            return redirect()->route('products.list')->with('status', __('products.not_found'));
+        }
+
+        return view('admin.products.edit', ['product' => $product, 'categories' => $categories, 'brands' => $brands]);
+    }
+
+    public function update(CreateProduct $request, $id) {
+        $data = $request->only([
+            'name',
+            'category_id',
+            'brand_id',
+            'price',
+            'image',
+            'image_list',
+        ]);
+
+        if (isset($data['image'])) {            
+            $image = $this->upload($data['image']);
+
+            if (!$image['status']) {
+                return back()->with('status', $image['msg']);
+            }
+
+            $data['image'] = $image['file_name'];
+        }
+
+        if (isset($data['image_list'])) {
+            $imageList = $this->upload($data['image_list']);
+
+            if (!$imageList['status']) {
+                return back()->with('status', $imageList['msg']);
+            }
+
+            $data['image_list'] = $imageList['file_name'];
+        }
+
+        try {
+            $product = Product::find($id);
+            $oldImage = $product->image;
+            $oldImageList = $product->image_list;
+            $product->update($data);
+            
+            if (isset($data['image'])) {
+                $imagePath = public_path() . '/' . config('products.image_path') . $oldImage;
+
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            if (isset($data['image_list'])) {
+                $imagePath = public_path() . '/' . config('products.image_path') . $oldImageList;
+
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            return redirect(route('products.list', $product->id))->with('status', __('products.updated'));
+        } catch (\Exception $e) {
+            return back()->with('status', __('products.update_fail'));
+        }
     }
 }

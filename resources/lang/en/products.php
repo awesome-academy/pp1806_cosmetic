@@ -11,4 +11,6 @@ return [
     'pro_cat' => 'Category',
     'pro_user' => 'User Name',
     'pro_action' => 'Action',
+    'update_fail' => 'Update fail',
+    'updated' => 'Product updated!'
 ];
