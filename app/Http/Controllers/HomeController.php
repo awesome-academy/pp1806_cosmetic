@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Brand;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::orderBy('created_at', 'DESC')->get();
+        $brands = Brand::inRandomOrder()->take(config('products.brand_on_home'))->get();
+
+        return view('index', ['products' => $products, 'brands' => $brands]);
     }
 }
