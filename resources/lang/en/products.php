@@ -12,5 +12,8 @@ return [
     'pro_user' => 'User Name',
     'pro_action' => 'Action',
     'update_fail' => 'Update fail',
-    'updated' => 'Product updated!'
+    'updated' => 'Product updated!',
+    'features' => 'Features Items',
+    'add_to_card' => 'Add to cart',
+    'recommended' => 'recommended items'
 ];
