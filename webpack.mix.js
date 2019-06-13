@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
 
+    .js('resources/js/delete_users.js', 'public/js/delete_users.js')
     .copy('resources/js/jquery.js', 'public/layouts/js')
     .copy('resources/js/bootstrap.min.js', 'public/layouts/js')
     .copy('resources/js/jquery.scrollUp.min.js', 'public/layouts/js')

@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
         Route::post('/admin/category', 'Admin\CategoryController@store')->name('admin.category.store');
     });
+    Route::get('/user', 'UserController@index')->name('user.index');
+    Route::get('/user/{user}', 'UserController@show')->name('user.show');
+    Route::delete('/user/{user}', 'UserController@destroy')->name('user.destroy');
+    Route::get('/user/{user}/edit', 'UserController@edit')->name('user.edit');
+    Route::post('/user/{user}', 'UserController@update')->name('user.update');
 });
 
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
@@ -41,3 +46,5 @@ Route::delete('/delete-cart-item/{id}', 'ProductController@deleteCartItem')->nam
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
 Route::get('/up-cart-qty/{id}', 'ProductController@upCartQty')->name('product.upCartQty');
 Route::get('/down-cart-qty/{id}', 'ProductController@downCartQty')->name('product.downCartQty');
+
+//Route::get('/user/{user}', 'UserController@show')->name('user');
