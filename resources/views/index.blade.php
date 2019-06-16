@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+<!--/slider-->
+    @include("layouts.elements.slide")
     <div class="row">        
         <div class="col-sm-12">
             <div class="features_items"><!--features_items-->
@@ -14,7 +16,7 @@
                                         <img src="{{ $product->image }}" alt="" />
                                         <h2>{{ $product->price }}</h2>
                                         <p> {{ $product->name }}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
+                                        <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                     </div>
                             </div>
                         </div>

@@ -1,0 +1,17 @@
+.delete-cart-all {
+    background: #FE980F;
+    border-radius: 0;
+    color: #FFFFFF;
+    margin-top: 18px;
+    border: none;
+    padding: 5px 15px;
+}
+.badge {
+    background: #FE980F;
+}
+.cart_quantity_button a {
+    color: #000000;
+}
+.cart_quantity_button .clicked {
+    background-color: #ABABA9;
+}

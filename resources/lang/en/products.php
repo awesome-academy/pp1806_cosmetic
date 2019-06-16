@@ -4,7 +4,7 @@ return [
     'status' => 'Create successfuly',
     'not_found' => 'Product does not exist',
     'delete_success' => 'Delete successfully',
-    'delete_fail' => 'Failed to delete order',
+    'delete_fail' => 'Failed to delete',
     'pro_name' => 'Product Name',
     'pro_price' => 'Price',
     'pro_brand' => 'Brand',

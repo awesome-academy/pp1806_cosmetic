@@ -29,4 +29,7 @@ mix.js('resources/js/app.js', 'public/js')
     .styles('resources/css/animate.css', 'public/layouts/css/animate.css')
     .styles('resources/css/prettyPhoto.css', 'public/layouts/css/prettyPhoto.css')
     .styles('resources/css/price-range.css', 'public/layouts/css/price-range.css')
-    .copy('resources/fonts/', './public/layouts/fonts/', false);
+    .copy('resources/fonts/', './public/layouts/fonts/', false)
+
+    .js('resources/js/cart.js', 'public/js')
+    .styles('resources/css/style.css', 'public/layouts/css/style.css');
