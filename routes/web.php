@@ -48,3 +48,7 @@ Route::get('/up-cart-qty/{id}', 'ProductController@upCartQty')->name('product.up
 Route::get('/down-cart-qty/{id}', 'ProductController@downCartQty')->name('product.downCartQty');
 
 //Route::get('/user/{user}', 'UserController@show')->name('user');
+
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/term', 'HomeController@term')->name('term');
+

@@ -30,4 +30,12 @@ class HomeController extends Controller
 
         return view('index', ['products' => $products, 'brands' => $brands]);
     }
+
+    public function contact() {
+        return view('contact');
+    }
+
+    public function term() {
+        return view('term');
+    }
 }
