@@ -13,6 +13,7 @@
     <link href="{{ asset('layouts/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('layouts/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('layouts/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('layouts/css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('layouts/images') }}/ico/favicon.ico">
 </head><!--/head-->
 

@@ -34,3 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/category', 'Admin\CategoryController@store')->name('admin.category.store');
     });
 });
+
+Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
+Route::get('/delete-cart-all', 'ProductController@deleteCartAll')->name('product.deleteCartAll');
+Route::delete('/delete-cart-item/{id}', 'ProductController@deleteCartItem')->name('product.deleteCartItem');
+Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
+Route::get('/up-cart-qty/{id}', 'ProductController@upCartQty')->name('product.upCartQty');
+Route::get('/down-cart-qty/{id}', 'ProductController@downCartQty')->name('product.downCartQty');
