@@ -32,4 +32,6 @@ return [
     'update' => 'Update',
     'user_pro' => 'User Profile',
     'not_exist' => 'User Does Not Exist',
+    'not_permission' => 'You Dont Have Permission',
+    'not_del' => 'You Can Not Delete Admin',
 ];

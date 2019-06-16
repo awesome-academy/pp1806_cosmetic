@@ -1,13 +1,19 @@
 {
-    "/js/adminCustome.js": "/js/adminCustome.js",
+    "/js/admin_custom.js": "/js/admin_custom.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/layouts/js/bootstrap.min.js": "/layouts/js/bootstrap.min.js",
+    "/js/delete_users.js": "/js/delete_users.js",
     "/layouts/js/jquery.js": "/layouts/js/jquery.js",
+    "/layouts/js/bootstrap.min.js": "/layouts/js/bootstrap.min.js",
     "/layouts/js/jquery.scrollUp.min.js": "/layouts/js/jquery.scrollUp.min.js",
+    "/layouts/js/price-range.js": "/layouts/js/price-range.js",
+    "/layouts/js/jquery.prettyPhoto.js": "/layouts/js/jquery.prettyPhoto.js",
     "/layouts/js/main.js": "/layouts/js/main.js",
     "/layouts/css/bootstrap.min.css": "/layouts/css/bootstrap.min.css",
     "/layouts/css/font-awesome.min.css": "/layouts/css/font-awesome.min.css",
     "/layouts/css/main.css": "/layouts/css/main.css",
-    "/layouts/css/responsive.css": "/layouts/css/responsive.css"
+    "/layouts/css/responsive.css": "/layouts/css/responsive.css",
+    "/layouts/css/animate.css": "/layouts/css/animate.css",
+    "/layouts/css/prettyPhoto.css": "/layouts/css/prettyPhoto.css",
+    "/layouts/css/price-range.css": "/layouts/css/price-range.css"
 }
