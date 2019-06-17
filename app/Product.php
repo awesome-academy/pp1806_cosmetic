@@ -27,4 +27,9 @@ class Product extends Model
     public function brand() {
         return $this->belongsTo('App\Brand');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order', 'order_products', 'product_id', 'order_id');
+    }
 }

@@ -13,7 +13,7 @@ class AddImageAddressInUsersTable extends Migration
      */
     public function up() {
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumns('users', 'image', 'address')) {
+            if (!Schema::hasColumns('users', ['image', 'address'])) {
                 $table->string('image')->nullable();
                 $table->string('address')->nullable();
             }

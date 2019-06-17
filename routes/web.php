@@ -26,6 +26,11 @@ Route::group([
     Route::delete('/admin/products/{product}', 'ProductsController@destroy')->name('products.destroy');
     Route::get('/admin/products/{product}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/admin/products/{product}', 'ProductsController@update')->name('products.update');
+    Route::get('/admin/orders', 'OrdersController@index')->name('orders.index');
+    Route::get('/admin/orders/{order}/edit', 'OrdersController@edit')->name('orders.edit');
+    Route::post('/admin/orders/{order}', 'OrdersController@update')->name('orders.update');
+    Route::get('/admin/orders/{order}', 'OrdersController@show')->name('orders.show');
+    Route::delete('/admin/orders/{product}', 'OrdersController@destroy')->name('products.destroy');
 });
 Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {

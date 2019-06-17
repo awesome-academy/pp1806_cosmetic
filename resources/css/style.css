@@ -48,3 +48,10 @@
 .shopper-informations input#name {
     background-color: unset;
 }
+.box {
+    margin-bottom: 22px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}

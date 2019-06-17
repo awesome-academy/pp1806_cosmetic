@@ -1,6 +1,7 @@
 <?php
 return [
-    'new' => 1,
-    'delivering' => 2,
-    'cancelled' => 3,
+    'pending' => 1,
+    'processing' => 2,
+    'delivered' => 3,
+    'cancelled' => 4
 ];

@@ -40,7 +40,7 @@ class CheckoutController extends Controller
         $cart = session()->get('cart');
         $data['user_id'] = auth()->id();
         $data['total_price'] = $cart->totalPrice;
-        $data['status'] = config('order.new');
+        $data['status'] = config('order.pending');
 
         try {
             $order = Order::create($data);
@@ -61,10 +61,12 @@ class CheckoutController extends Controller
                 return redirect()->route('home')->with('success', __('checkout.create_success'));
             }catch (\Exception $e) {
                 $order->delete();
+                dd("AA");
                 return back()->with('error', __('checkout.create_fail'));
             }
 
         }catch (\Exception $e) {
+            dd($data, config('order.pendding'));
             return back()->with('error', __('checkout.create_fail'));
         }
     }
