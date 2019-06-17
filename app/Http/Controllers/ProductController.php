@@ -22,14 +22,13 @@ class ProductController extends Controller
     public function getCart() {
         $data = [];
 
-        if (!session()->has('cart')) {
-            return view('shop.shopping-cart');
-        }
-
+        if (session()->has('cart')) {
         $oldCart = session()->get('cart');
         $cart = new Cart($oldCart);
+        $data = ['products' => $cart->items, 'totalPrice' => $cart->totalPrice];
+        }
 
-        return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        return view('shop.shopping-cart', $data);
     }
 
     public function deleteCartAll() {
@@ -84,7 +83,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $oldCart = session()->get('cart');
             $cart = new Cart($oldCart);
-            if ($cart->upQty($product, $product->id)) {
+            if ($cart->upQuantity($product, $product->id)) {
                 session()->put('cart', $cart);
                 $newCart = session()->get('cart');
                 $itemPrice = $newCart->items[$id]['price'];
@@ -116,7 +115,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $oldCart = session()->get('cart');
             $cart = new Cart($oldCart);
-            if ($cart->downQty($product, $product->id)) {
+            if ($cart->downQuantity($product, $product->id)) {
                 session()->put('cart', $cart);
                 $newCart = session()->get('cart');
                 $itemPrice = $newCart->items[$id]['price'];

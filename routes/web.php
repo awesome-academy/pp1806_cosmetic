@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/{user}/edit', 'UserController@edit')->name('user.edit');
         Route::post('/user/{user}', 'UserController@update')->name('user.update');
     });
-
+    Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+    Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 });
 
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');

@@ -15,3 +15,36 @@
 .cart_quantity_button .clicked {
     background-color: #ABABA9;
 }
+.breadcrumbs .breadcrumb {
+    margin-bottom: 0px;
+}
+.shopper-informations input {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 300;
+}
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+    text-align: center;
+}
+.shopper-informations textarea {
+    height: unset;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 300;
+    border-radius: 4px;
+    background: unset;
+}
+.shopper-informations input#name {
+    background-color: unset;
+}
