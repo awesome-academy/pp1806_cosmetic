@@ -19,11 +19,11 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
-                            <td class="image">Item</td>
+                            <td class="image">{{ __('cart.item') }}</td>
                             <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Quantity</td>
-                            <td class="total">Total</td>
+                            <td class="price">{{ __('cart.price') }}</td>
+                            <td class="quantity">{{ __('cart.quantity') }}</td>
+                            <td class="total">{{ __('cart.total') }}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -43,7 +43,7 @@
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
                                         <a class="cart_quantity_up" data-product-id="{{ $product['item']->id }}" role="button"> + </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity_{{ $product['item']->id }}" value="{{$product['qty']}}" size="2">
+                                        <input class="cart_quantity_input" type="text" name="quantity_{{ $product['item']->id }}" value="{{$product['quantity']}}" size="2" readonly>
                                         <a class="cart_quantity_down" data-product-id="{{ $product['item']->id }}" role="button"> - </a>
                                     </div>
                                 </td>
@@ -74,8 +74,7 @@
                                             <a href="{{ route('product.deleteCartAll')}}" class="btn btn-default delete-cart-all" role="button"><i class="fa fa-trash-o"></i> {{ __('cart.delete') }}</a>
                                         </td>
                                         <td>
-                                            <button type="submit" class="btn btn-default check_out"
-                                               href="{{ url('checkout')}}">{{ __('cart.checkout') }}</button>
+                                            <a href="{{ route('checkout.index')}}" class="btn btn-default check_out" role="button">{{ __('cart.checkout') }}</a>
                                         </td>
                                     </tr>
                                     </tbody>

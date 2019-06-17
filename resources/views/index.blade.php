@@ -1,9 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-
-<!--/slider-->
-
+    <div class="alert alert-success {{ !session('success') ? 'hidden' : ''  }}">
+        {{ session('success') }}
+    </div>
+    <!--/slider-->
     @include("layouts.elements.slide")
     <div class="row">        
         <div class="col-sm-12">

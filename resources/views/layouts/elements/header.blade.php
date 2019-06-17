@@ -64,7 +64,7 @@
                             <li>
                                 <a href="{{ route('product.shoppingCart') }}">
                                     <i class="fa fa-shopping-cart"></i> Cart
-                                    <span class="badge">{{ session()->has('cart') ? session()->get('cart')->totalQty : '' }}</span>
+                                    <span class="badge">{{ session('cart') ? session('cart')->totalQuantity : '' }}</span>
                                 </a>
                             </li>
                             <li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
