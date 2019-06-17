@@ -32,12 +32,14 @@ Route::middleware('auth')->group(function () {
         Route::get('admin/category', 'Admin\CategoryController@index')->name('admin.category.index');
         Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
         Route::post('/admin/category', 'Admin\CategoryController@store')->name('admin.category.store');
+
+        Route::get('/user', 'UserController@index')->name('user.index');
+        Route::get('/user/{user}', 'UserController@show')->name('user.show');
+        Route::delete('/user/{user}', 'UserController@destroy')->name('user.destroy');
+        Route::get('/user/{user}/edit', 'UserController@edit')->name('user.edit');
+        Route::post('/user/{user}', 'UserController@update')->name('user.update');
     });
-    Route::get('/user', 'UserController@index')->name('user.index');
-    Route::get('/user/{user}', 'UserController@show')->name('user.show');
-    Route::delete('/user/{user}', 'UserController@destroy')->name('user.destroy');
-    Route::get('/user/{user}/edit', 'UserController@edit')->name('user.edit');
-    Route::post('/user/{user}', 'UserController@update')->name('user.update');
+
 });
 
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
@@ -52,3 +54,8 @@ Route::get('/down-cart-qty/{id}', 'ProductController@downCartQty')->name('produc
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/term', 'HomeController@term')->name('term');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/{user}', 'UserProfileController@show')->name('profile.show');
+    Route::get('/profile/{user}/edit', 'UserProfileController@edit')->name('profile.edit');
+    Route::post('/profile/{user}', 'UserProfileController@update')->name('profile.update');
+});

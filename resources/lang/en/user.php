@@ -34,4 +34,7 @@ return [
     'not_exist' => 'User Does Not Exist',
     'not_permission' => 'You Dont Have Permission',
     'not_del' => 'You Can Not Delete Admin',
+    'pass'=> 'Password',
+    'pass_confirm' => 'Confirm Password',
+    'edit_user' => 'Edit Your Profile',
 ];
