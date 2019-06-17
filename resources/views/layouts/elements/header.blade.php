@@ -67,7 +67,10 @@
                                     <span class="badge">{{ session('cart') ? session('cart')->totalQuantity : '' }}</span>
                                 </a>
                             </li>
-                            <li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
+                            @if(!Auth::user()->id)
+                                <a href="{{ route('login') }}>
+                            @endif
+                                <li><a href="{{ route('profile.show', Auth::user()->id) }}"><i class="fa fa-user"></i> My Profile</a></li>
                         <!-- Authentication Links -->
                             @guest
                                 <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
@@ -116,31 +119,37 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                {{--<ul role="menu" class="sub-menu">--}}
-                                    {{--<li><a href="shop.html">Products</a></li>--}}
-                                    {{--<li><a href="product-details.html">Product Details</a></li> --}}
-                                    {{--<li><a href="checkout.html">Checkout</a></li> --}}
-                                    {{--<li><a href="cart.html">Cart</a></li> --}}
-                                    {{--<li><a href="login.html">Login</a></li> --}}
-                                {{--</ul>--}}
-                            </li> 
-                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                {{--<ul role="menu" class="sub-menu">--}}
-                                    {{--<li><a href="blog.html">Blog List</a></li>--}}
-                                    {{--<li><a href="blog-single.html">Blog Single</a></li>--}}
-                                {{--</ul>--}}
+                            <li><a href="{{route('category.index')}}">Category<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    @foreach($category as $cate)
+                                        @if($cate->parent_id == 0)
+                                            <li><a href="{{ route('category.type', $cate->id) }}">{{ $cate->name }}</a>
+                                                <ul role="menu" class="sub-sub-menu">
+                                                    @foreach($category as $catechild)
+                                                        @if($catechild->parent_id == $cate->id)
+                                                            <li><a href="{{ route('category.type', $catechild->id) }}">{{ $catechild->name }}</a></li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
                             </li>
                             <li><a href="{{ route('contact') }}">{{ __('contact.contact') }}</a></li>
                             <li><a href="{{ route('term') }}">{{ __('term.term') }}</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                <form method="get" action="{{ route('search') }}" class="searchform" >
+                    {{ csrf_field() }}
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" name="name" placeholder="Search" style="color: #122b40"/>
+                            <button type="submit" class="btn btn-default"><i class="fa fa-location-arrow"></i></button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div><!--/header-bottom-->
