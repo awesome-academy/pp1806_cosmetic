@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+
 <!--/slider-->
+
     @include("layouts.elements.slide")
     <div class="row">        
         <div class="col-sm-12">
