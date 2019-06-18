@@ -67,10 +67,6 @@
                                     <span class="badge">{{ session('cart') ? session('cart')->totalQuantity : '' }}</span>
                                 </a>
                             </li>
-                            @if(!Auth::user()->id)
-                                <a href="{{ route('login') }}>
-                            @endif
-                                <li><a href="{{ route('profile.show', Auth::user()->id) }}"><i class="fa fa-user"></i> My Profile</a></li>
                         <!-- Authentication Links -->
                             @guest
                                 <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
@@ -94,9 +90,13 @@
                                             </form>
                                         </li>
                                     </ul>
+
+                                    @if(!Auth::user()->id)
+                                        <a href="{{ route('login') }}>
+                                    @endif
+                                    <li><a href="{{ route('profile.show', Auth::user()->id) }}"><i class="fa fa-user"></i> My Profile</a></li>
                                 </li>
                             @endguest
-
                         </ul>
                     </div>
                 </div>

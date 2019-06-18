@@ -13,7 +13,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $user = User::paginate(config('user.paginate'));
+            $user = User::paginate(config('user.paginate'));
 
         return view('user.index', ['user' => $user]);
     }

@@ -46,7 +46,7 @@ class CategoryController extends Controller
             return back()->with('status', $e->getMessage());
         }
 
-        return redirect()->route('admin.category.index')->with('status', __('category.status'));
+        return redirect('admin/category')->with('status', __('category.status'));
     }
 
     /**
@@ -84,7 +84,8 @@ class CategoryController extends Controller
             return back()->with('status', $e->getMessage());
         }
 
-        return redirect()->route('admin.category.index')->with('status', __('category.status'));
+        return redirect('admin/category/' . $id)->with('status', __('category.status'));
+
     }
 
     /**
@@ -108,7 +109,7 @@ class CategoryController extends Controller
             ];
         }
 
-        return response()->json($result);
+        return redirect()->route('admin.category.index')->with('status', __('Successfully'));
     }
 }
 
