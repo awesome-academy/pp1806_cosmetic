@@ -11,12 +11,11 @@
             <div class="features_items"><!--features_items-->
                 <h2 class="title text-center">{{ __('products.features') }}</h2>
                 @foreach ($products as $product)
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <!-- <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="" /> -->
-                                        <img src="{{ $product->image }}" alt="" />
+                                        <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
                                         <h2>{{ $product->price }}</h2>
                                         <p> {{ $product->name }}</p>
                                         <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -25,6 +24,8 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div class="pull-right">{{ $products->links() }}</div>
                 
             </div><!--features_items-->
             
@@ -44,7 +45,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="{{ $product->image }}" alt="" />
+                                                <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
                                                 <h2>{{ $product->price }}</h2>
                                                 <p>{{ $product->name }}</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -70,7 +71,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend1.jpg" alt="" />
+                                            <img src="{{ asset("/images/1-7.jpg") }}" alt="hihi" height="250" width="200"/>
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -83,7 +84,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend2.jpg" alt="" />
+                                            <img src="{{ asset("/images/1-8.jpg") }}" alt="hihi" height="250" width="200" />
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -96,7 +97,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend3.jpg" alt="" />
+                                            <img src="{{ asset("/images/2-43-768x851.jpg") }}" alt="hihi" height="250" width="200" />
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -111,7 +112,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend1.jpg" alt="" />
+                                            <img src="{{ asset("/images/1-10.jpg") }}" alt="hihi" height="250" width="200" />
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -124,7 +125,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend2.jpg" alt="" />
+                                            <img src="{{ asset("/images/2.jpg") }}" alt="hihi" height="250" width="200" />
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
@@ -137,7 +138,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/recommend3.jpg" alt="" />
+                                            <img src="{{ asset("/images/3.jpg") }}" alt="hihi" height="250" width="200" />
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>

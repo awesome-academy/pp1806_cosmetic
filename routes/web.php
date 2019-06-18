@@ -60,3 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user}/edit', 'UserProfileController@edit')->name('profile.edit');
     Route::post('/profile/{user}', 'UserProfileController@update')->name('profile.update');
 });
+
+Route::get('/category', 'FrontendCategoryController@index')->name('category.index');
+Route::get('/category/{category}', 'FrontendCategoryController@getType')->name('category.type');
+Route::get('/search', 'HomeController@search')->name('search');
