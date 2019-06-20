@@ -20,6 +20,7 @@ Auth::routes();
 Route::group([
     'namespace' => 'Admin',
 ], function () {
+    Route::get('/admin/login', 'LoginController@index')->name('login.index');
     Route::middleware('auth')->group(function () {
         Route::middleware('admin')->group(function () {
             Route::get('/admin/products', 'ProductsController@index')->name('products.list');
