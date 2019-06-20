@@ -2,7 +2,9 @@
     "/js/admin_custom.js": "/js/admin_custom.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/cart.js": "/js/cart.js",
     "/js/delete_users.js": "/js/delete_users.js",
+    "/js/filter.js": "/js/filter.js",
     "/layouts/js/jquery.js": "/layouts/js/jquery.js",
     "/layouts/js/bootstrap.min.js": "/layouts/js/bootstrap.min.js",
     "/layouts/js/jquery.scrollUp.min.js": "/layouts/js/jquery.scrollUp.min.js",
@@ -15,5 +17,6 @@
     "/layouts/css/responsive.css": "/layouts/css/responsive.css",
     "/layouts/css/animate.css": "/layouts/css/animate.css",
     "/layouts/css/prettyPhoto.css": "/layouts/css/prettyPhoto.css",
-    "/layouts/css/price-range.css": "/layouts/css/price-range.css"
+    "/layouts/css/price-range.css": "/layouts/css/price-range.css",
+    "/layouts/css/style.css": "/layouts/css/style.css"
 }

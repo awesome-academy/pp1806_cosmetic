@@ -26,7 +26,7 @@ class AddParentIdInCategoriesTable extends Migration
      */
     public function down() {
         Schema::table('categories', function (Blueprint $table) {
-            if (!Schema::hasColumn('categories', 'parent_id')) {
+            if (Schema::hasColumn('categories', 'parent_id')) {
                 $table->dropColumn('parent_id');
             }
         });

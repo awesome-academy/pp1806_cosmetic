@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
     public function index() {
             $user = User::paginate(config('user.paginate'));
 
-        return view('user.index', ['user' => $user]);
+        return view('admin.user.index', ['user' => $user]);
     }
 
     private function upload($file) {
@@ -62,11 +63,12 @@ class UserController extends Controller
      */
     public function show($id) {
         $user = User::find($id);
+
         if (!$user) {
             return back()->with('status', __('user.not_exist'));
         }
 
-        return view('user.show', ['user' => $user]);
+        return view('admin.user.show', ['user' => $user]);
     }
     
     /**
@@ -77,6 +79,7 @@ class UserController extends Controller
      */
     public function edit($id) {
         $user = User::find($id);
+
         if(!$user) {
             return back()->with('status', __('user.not_exist'));
         }
@@ -86,7 +89,7 @@ class UserController extends Controller
 
         }
 
-        return view('user.edit', ['user' => $user]);
+        return view('admin.user.edit', ['user' => $user]);
     }
 
     /**
@@ -128,7 +131,7 @@ class UserController extends Controller
                 }
 
                 if($result['status'] == 'false') {
-                    return redirect()->route('user.index')->with('status', $result['msg']);
+                    return redirect()->route('admin.user.index')->with('status', $result['msg']);
                 }
 
                 $user->update($data);
@@ -138,7 +141,7 @@ class UserController extends Controller
             return back()->with('status', __('user.fail'));
         }
 
-        return redirect(route('user.show', $user->id))->with('status', __('user.status'));
+        return redirect(route('admin.user.show', $user->id))->with('status', __('user.status'));
     }
 
     /**
@@ -165,9 +168,9 @@ class UserController extends Controller
             }
             $user->delete();
         } catch (Exception $e) {
-            return redirect(route('user.index'))->with('status', $e->getMessage());
+            return redirect(route('admin.user.index'))->with('status', $e->getMessage());
         }
 
-        return redirect(route('user.index'))->with('status', __('user.status'));
+        return redirect(route('admin.user.index'))->with('status', __('user.status'));
     }
 }

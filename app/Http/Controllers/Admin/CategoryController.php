@@ -38,6 +38,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request) {
         $data = $request->only([
             'name',
+            'parent_id',
         ]);
 
         try {
@@ -56,13 +57,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $categories = Category::all();
         $category = Category::find($id);
-
         if (!$category) {
             return back()->with('status', __('category.fail'));
         }
 
-        return view('admin/category/edit', compact('category'));
+        return view('admin/category/edit', ['category' => $category, 'categories' => $categories]);
     }
 
     /**
@@ -75,17 +76,17 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, $id) {
         $data = $request->only([
             'name',
+            'parent_id',
         ]);
 
         try {
             $category = Category::find($id);
             $category->update($data);
+
+            return redirect()->route('admin.category.index', compact('category'))->with('status', __('category.status'));
         } catch (Exception $e) {
             return back()->with('status', $e->getMessage());
         }
-
-        return redirect('admin/category/' . $id)->with('status', __('category.status'));
-
     }
 
     /**

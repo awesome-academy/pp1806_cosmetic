@@ -33,4 +33,6 @@ mix.js('resources/js/app.js', 'public/js')
     .copy('resources/fonts/', './public/layouts/fonts/', false)
 
     .js('resources/js/cart.js', 'public/js')
+    .js('resources/js/filter.js', 'public/js')
     .styles('resources/css/style.css', 'public/layouts/css/style.css');
+

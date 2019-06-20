@@ -23,3 +23,7 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ asset('js/admin_custom.js') }}"></script>
+@stop

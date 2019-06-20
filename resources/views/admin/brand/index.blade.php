@@ -1,17 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Category List')
+@section('title', 'Brand List')
 
 @section('content_header')
-    <h1>Category List</h1>
+    <h1>Brand List</h1>
 @stop
-
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
-
 @section('content')
-
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
@@ -33,32 +30,27 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">{{__('category.name')}}</th>
-                                <th scope="col">{{__('category.parent')}}</th>
-                                <th scope="col">{{ __('category.action') }}</th>
+                                <th scope="col">{{ __('brand.name') }}</th>
+                                <th scope="col">{{ __('brand.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($category as $categories)
-                                <tr class="row_{{ $categories->id }}">
-                                    <th scope="row">{{ $categories->id }}</th>
+                            @foreach ($brand as $brands)
+                                <tr class="row_{{ $brands->id }}">
+                                    <th scope="row">{{ $brands->id }}</th>
                                     <td>
-                                        {{ $categories->name }}
+                                        {{ $brands->name }}
                                     </td>
                                     <td>
-                                        {{ $categories->parent_id }}
-
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.category.edit', ['category' => $categories->id]) }}" class="btn btn-info" role="button">Edit</a>
+                                        <a href="{{ route('admin.brand.edit', ['brand' => $brands->id]) }}" class="btn btn-info" role="button">Edit</a>
                                         {{--<a href="products/{{ $product->id }}" class="btn btn-info" role="button">View</a>--}}
                                         {{--<a href="#" class="btn btn-danger btn-del-brand" role="button" data-brand-id="{{ $brands->id }}">Delete</a>--}}
 
-                                        <form action="{{ route('admin.category.destroy',[$categories->id]) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger" data-toggle="modal" data-target="#delete" type="submit">{{ __('category.del') }}</button>
-                                        </form>
+                                            <form action="{{ route('admin.brand.destroy',[$brands->id]) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#delete" type="submit">{{ __('category.del') }}</button>
+                                            </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -66,9 +58,8 @@
                             <tfoot>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">{{__('category.name')}}</th>
-                                <th scope="col">{{__('category.parent')}}</th>
-                                <th scope="col">{{ __('category.action') }}</th>
+                                <th scope="col">{{ __('brand.name') }}</th>
+                                <th scope="col">{{ __('brand.action') }}</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -82,7 +73,8 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-@endsection
+@stop
+
 @section('js')
     <script src="{{ asset('js/admin_custom.js') }}"></script>
 @stop

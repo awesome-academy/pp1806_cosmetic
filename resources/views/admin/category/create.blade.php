@@ -11,7 +11,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{__('category.cre_cat')}}</h3>
                     </div>
-                    <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data" class="form-horizontal">
+                    <form method="POST" action="{{ route('admin.category.store') }}" class="form-horizontal">
                         @csrf
                         <div class="box-body">
                             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }} ">
@@ -32,6 +32,32 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group {{ $errors->has('parent_id') ? 'has-error' : '' }} ">
+                            <label for="{{ $errors->has('parent_id') ? 'inputError' : 'parent_id' }}" class="col-sm-3 control-label">
+                                @if ($errors->has('parent_id'))
+                                    <i class="fa fa-times-circle-o"></i>
+                                @endif
+                                {{ __('parent_id') }}
+                            </label>
+
+                            <div class="col-sm-9">
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a Parent ID"
+
+                                        style="width: 100%;"id="{{ $errors->has('parent_id') ? 'inputError' : 'parent_id' }}" name="parent_id">
+                                    @foreach ($category as $categories)
+                                        @if($categories->parent_id == 0)
+                                        <option value="{{ $categories->id }}">{{ $categories->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('parent_id'))
+                                    <span class="help-block">{{ $errors->first('parent_id') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="box-footer">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary pull-right">{{ __('Create') }}</button>
