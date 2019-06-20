@@ -53,7 +53,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Select a Category"
+                                    <select class="form-control select2" data-placeholder="Select a Category"
                                         style="width: 100%;"id="{{ $errors->has('category_id') ? 'inputError' : 'category_id' }}" name="category_id" value="{{ $product->category->id }}">
                                     @foreach ($categories as $category)  
                                         <option value="{{ $category->id }}" <?php if ($product->category->id == $category->id) echo "selected" ?>>{{ $category->name}}</option>
@@ -74,7 +74,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Select a Brand"
+                                    <select class="form-control select2" data-placeholder="Select a Brand"
                                         style="width: 100%;"id="{{ $errors->has('brand_id') ? 'inputError' : 'brand_id' }}" name="brand_id" value="{{ $product->brand->id }}">
                                     @foreach ($brands as $brand)  
                                         <option value="{{ $brand->id }}" <?php if ($product->brand->id == $brand->id) echo "selected" ?>>{{ $brand->name}}</option>

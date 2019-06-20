@@ -151,7 +151,8 @@ class ProductController extends Controller
             return back()->with('status', __('products.not_found'));
         }
         
-        $data = ['product' => $product, 'recommendPros' => $recommendPros];
+        $imageLists = explode(",", $product->image_list);
+        $data = ['product' => $product, 'recommendPros' => $recommendPros, 'imageLists' => $imageLists];
 
         return view('product.show', $data);
     }

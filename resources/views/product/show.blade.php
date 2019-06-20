@@ -10,22 +10,27 @@
             
               <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active">
-                      <a href=""><img src="../layouts/images/product-details/similar1.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar2.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar3.jpg" alt=""></a>
-                    </div>
-                    <div class="item">
-                      <a href=""><img src="../layouts/images/product-details/similar1.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar2.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar3.jpg" alt=""></a>
-                    </div>
-                    <div class="item">
-                      <a href=""><img src="../layouts/images/product-details/similar1.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar2.jpg" alt=""></a>
-                      <a href=""><img src="../layouts/images/product-details/similar3.jpg" alt=""></a>
-                    </div>
-                    
+                    @foreach ($imageLists as $key => $image)
+                        @if ($key == 0)
+                            <div class="item active">
+                        @endif
+
+                            <a href=""><img src="{{ asset(config('products.image_path') . $image) }}" style="width:85px" alt=""></a>
+
+                        @if (($key + 1) % 3 == 0)
+                            </div>
+
+                             @if (($key + 1) != count($imageLists))
+                                <div class="item">
+                            @endif
+
+                        @endif
+
+                        @if (($key + 1) == count($imageLists) && ($key + 1) % 3 != 0)
+                            </div>
+                        @endif
+                        
+                    @endforeach
                 </div>
 
               <!-- Controls -->
@@ -36,7 +41,6 @@
                 <i class="fa fa-angle-right"></i>
               </a>
         </div>
-
     </div>
     <div class="col-sm-7">
         <div class="product-information"><!--/product-information-->
@@ -63,28 +67,39 @@
     
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <?php $flag = 0;?>
-            @foreach ($recommendPros as $pro)
-                @if (($flag % 3) == 0)
-                    <div class="item {{ $flag == 0 ? 'active' : ''}}">  
-                @endif <?php $flag++; ?>                                   
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="{{ asset(config('products.image_path') . $pro->image) }}" alt="" />
-                                        <h2>{{ number_format($product->price) }}</h2>
-                                        <p>{{ $product->name }}</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i> {{ __('products.pro_add_to_cart') }}</button>
-                                    </div>
+            @foreach ($recommendPros as $key => $product)
+                @if ($key == 0)
+                    <div class="item active">
+                @endif
+
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="" />
+                                    <h2>{{ number_format($product->price) }}</h2>
+                                    <p>{{ $product->name }}</p>
+                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i> {{ __('products.pro_add_to_cart') }}</button>
                                 </div>
                             </div>
-                        </div>   
-                @if (($flag % 3) == 0)
+                        </div>
                     </div>
-                @endif                
+
+                @if (($key + 1) % 3 == 0)
+                    </div>
+
+                     @if (($key + 1) != count($recommendPros))
+                        <div class="item">
+                    @endif
+
+                @endif
+
+                @if (($key + 1) == count($recommendPros) && ($key + 1) % 3 != 0)
+                    </div>
+                @endif
+
             @endforeach
-        </div> </div>
+        </div>
          <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
             <i class="fa fa-angle-left"></i>
           </a>

@@ -42,17 +42,21 @@ class ProductsController extends Controller
         }
 
         $data['image'] = $image['file_name'];
-        $imageList = $this->upload($data['image_list']);
+        $imageList = [];
 
-        if (!$imageList['status']) {
-            return back()->with('status', $imageList['msg']);
+        foreach ($data['image_list'] as $item) {
+            $image = $this->upload($item);
+
+            if (!$image['status']) {
+                return back()->with('status', $image['msg']);
+            }
+
+            $imageList[] = $image['file_name'];
         }
 
-        $data['image_list'] = $imageList['file_name'];
-        $currentUserId = 1; // Update lated
-
+        $data['image_list'] = implode(",",array_values($imageList));
         try {
-            $data['user_id'] = $currentUserId;
+            $data['user_id'] = auth()->id();
             Product::create($data);
         } catch (\Exception $e) {
             return back()->with('status', $e->getMessage());

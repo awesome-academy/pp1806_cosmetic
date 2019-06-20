@@ -29,7 +29,7 @@
                             <div class="alert alert-warning" style="display: none;"></div>                
                             <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }} ">
                                 <label for="{{ $errors->has('description') ? 'inputError' : 'description' }}" class="col-sm-3 control-label">
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('description'))
                                         <i class="fa fa-times-circle-o"></i> 
                                     @endif
                                     {{ __('order.order_desc') }}
@@ -70,7 +70,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" data-placeholder="Select a Brand"
+                                    <select class="form-control select2" data-placeholder="Select a Status"
                                         style="width: 100%;"id="{{ $errors->has('status') ? 'inputError' : 'status' }}" name="status" value="{{ $order->status }}">
                                         <option value="{{ config('order.pending') }}" <?php if (config('order.pending') == $order->status) echo "selected" ?>>{{ __('order.status.1') }}</option>
                                         <option value="{{ config('order.processing') }}" <?php if (config('order.processing') == $order->status) echo "selected" ?>>{{ __('order.status.2') }}</option>

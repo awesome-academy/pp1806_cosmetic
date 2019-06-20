@@ -16,7 +16,7 @@
                             <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
-                                        <h2>{{ $product->price }}</h2>
+                                        <h2>{{ number_format($product->price) }} {{ __('products.pro_currency') }}</h2>
                                         <p><a href="{{ route('product.show', $product->id) }}" class="product-name">{{ $product->name }}</a></p>
                                         <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                     </div>
@@ -49,7 +49,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
-                                                <h2>{{ $product->price }}</h2>
+                                                <h2>{{ number_format($product->price) }} {{ __('products.pro_currency') }}</h2>
                                                 <p>{{ $product->name }}</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                             </div>
