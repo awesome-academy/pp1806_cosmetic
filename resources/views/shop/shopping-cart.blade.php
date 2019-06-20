@@ -31,7 +31,7 @@
                        @foreach($products as $product)
                            <tr class="row_{{ $product['item']->id }}">
                                 <td class="cart_product">
-                                    <a href=""><img src="{{ asset('layouts/images') }}/home/product1.jpg" alt=""></a>
+                                    <a href=""><img src="{{ asset(config('products.image_path') . $product['item']->image) }}" alt="" style="width: 200px"></a>
                                 </td>
                                 <td class="cart_description">
                                     <h4><a href="">{{ $product['item']->name }}</a></h4>

@@ -54,7 +54,6 @@
                                     </td>
                                     <td>
                                         <a href="products/{{ $product->id }}/edit" class="btn btn-info" role="button">Edit</a>
-                                        <a href="products/{{ $product->id }}" class="btn btn-info" role="button">View</a>
                                       <a href="#" class="btn btn-danger btn-del-product" role="button" data-product-id="{{ $product->id }}">Delete</a>
                                     </td>
                                 </tr>

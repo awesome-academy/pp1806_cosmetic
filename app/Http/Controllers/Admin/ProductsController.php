@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use App\Brand;
 use App\Http\Requests\CreateProduct;
+use App\Http\Requests\UpdateProduct;
 
 class ProductsController extends Controller
 {
@@ -25,6 +26,7 @@ class ProductsController extends Controller
     }
 
     public function store(CreateProduct $request) {
+        
         $data = $request->only([
             'name',
             'category_id',
@@ -128,7 +130,7 @@ class ProductsController extends Controller
         return view('admin.products.edit', ['product' => $product, 'categories' => $categories, 'brands' => $brands]);
     }
 
-    public function update(CreateProduct $request, $id) {
+    public function update(UpdateProduct $request, $id) {
         $data = $request->only([
             'name',
             'category_id',

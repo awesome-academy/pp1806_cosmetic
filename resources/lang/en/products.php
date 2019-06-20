@@ -15,5 +15,14 @@ return [
     'updated' => 'Product updated!',
     'features' => 'Features Items',
     'add_to_card' => 'Add to cart',
-    'recommended' => 'recommended items'
+    'recommended' => 'recommended items',
+    'pro_currency' => 'VND',
+    'pro_qty' => 'Quantity',
+    'pro_avaible' => 'Availability',
+    'pro_add_to_cart' => 'Add to cart',
+    'status' => [
+            1 => 'In Stock',
+            2 => 'Out Stock'
+        ],
+    'recommended' => 'Recommended Items'
 ];
