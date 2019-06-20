@@ -46,7 +46,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Select a Category"
+                                    <select class="form-control select2" data-placeholder="Select a Category"
                                         style="width: 100%;"id="{{ $errors->has('category_id') ? 'inputError' : 'category_id' }}" name="category_id" value="{{ old('category_id') }}">
                                     @foreach ($categories as $category)  
                                         <option value="{{ $category->id }}" <?php if (old('category_id') == $category->id) echo "selected" ?>>{{ $category->name}}</option>
@@ -67,7 +67,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Select a Brand"
+                                    <select class="form-control select2" data-placeholder="Select a Brand"
                                         style="width: 100%;"id="{{ $errors->has('brand_id') ? 'inputError' : 'brand_id' }}" name="brand_id" value="{{ old('brand_id') }}">
                                     @foreach ($brands as $brand)  
                                         <option value="{{ $brand->id }}" <?php if (old('brand_id') == $brand->id) echo "selected" ?>>{{ $brand->name}}</option>
@@ -123,7 +123,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="file"  name="image_list" class="form-control-file" id="image_list">
+                                    <input type="file" name="image_list[]" multiple>
 
                                     @if ($errors->has('image_list'))
                                     <span class="help-block">{{ $errors->first('image_list') }}</span>
