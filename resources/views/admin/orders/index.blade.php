@@ -69,9 +69,9 @@
                                         @endswitch
                                     </td>
                                     <td>
-                                        <a href="orders/{{ $order->id }}" class="btn  bg-yellow" role="button"><i class="fa fa-eye"></i></a>
-                                        <a href="orders/{{ $order->id }}/edit" class="btn btn-info" role="button"><i class="fa fa-edit"></i></a>
-                                      <a href="#" class="btn btn-danger btn-del-order" role="button" data-order-id="{{ $order->id }}"><i class="fa fa-trash-o"></i></a>
+                                        <a href="orders/{{ $order->id }}" class="btn  bg-yellow" role="button">View</a>
+                                        <a href="orders/{{ $order->id }}/edit" class="btn btn-info" role="button">Edit</i></a>
+                                      <a href="#" class="btn btn-danger btn-del-order" role="button" data-order-id="{{ $order->id }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

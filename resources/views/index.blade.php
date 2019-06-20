@@ -17,7 +17,7 @@
                                     <div class="productinfo text-center">
                                         <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
                                         <h2>{{ $product->price }}</h2>
-                                        <p> {{ $product->name }}</p>
+                                        <p><a href="{{ route('product.show', $product->id) }}" class="product-name">{{ $product->name }}</a></p>
                                         <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                     </div>
                             </div>
@@ -32,14 +32,17 @@
             <div class="category-tab"><!--category-tab-->
                 <div class="col-sm-12">
                     <ul class="nav nav-tabs">
+                        <?php $check = 0 ?>
                             @foreach ($brands as $brand)
-                                <li><a href="#{{ $brand->id }}" data-toggle="tab"> {{ $brand->name }} </a></li>
+                                <li class="{{ $check == 0 ? 'active' : '' }}"><a href="#{{ $brand->id }}" data-toggle="tab"> {{ $brand->name }} </a></li>
+                                <?php $check++ ?>
                             @endforeach
                     </ul>
                 </div>
                 <div class="tab-content">
+                    <?php $flag = 0 ?>
                     @foreach ($brands as $brand)
-                        <div class="tab-pane fade active in" id="{{ $brand->id }}" >
+                        <div class="tab-pane fade {{ $flag == 0 ? 'active in' : ''}}" id="{{ $brand->id }}" >
                             @foreach ($brand->products as $product)
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
@@ -56,107 +59,10 @@
                                 </div>
                             @endforeach
                         </div>
+                        <?php $flag++ ?>
                     @endforeach
                 </div>
             </div><!--/category-tab-->
-            
-            <div class="recommended_items"><!--recommended_items-->
-                <h2 class="title text-center">{{ __('products.recommended') }}</h2>
-                
-                <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        
-                        <div class="item active">   
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/1-7.jpg") }}" alt="hihi" height="250" width="200"/>
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/1-8.jpg") }}" alt="hihi" height="250" width="200" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/2-43-768x851.jpg") }}" alt="hihi" height="250" width="200" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">  
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/1-10.jpg") }}" alt="hihi" height="250" width="200" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/2.jpg") }}" alt="hihi" height="250" width="200" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ asset("/images/3.jpg") }}" alt="hihi" height="250" width="200" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                      </a>
-                      <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                      </a>          
-                </div>
-            </div><!--/recommended_items-->
         </div>
     </div>
 @endsection

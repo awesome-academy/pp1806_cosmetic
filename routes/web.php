@@ -20,17 +20,21 @@ Auth::routes();
 Route::group([
     'namespace' => 'Admin',
 ], function () {
-    Route::get('/admin/products', 'ProductsController@index')->name('products.list');
-    Route::get('/admin/products/create', 'ProductsController@create')->name('products.create');
-    Route::post('/admin/products', 'ProductsController@store')->name('products.store');
-    Route::delete('/admin/products/{product}', 'ProductsController@destroy')->name('products.destroy');
-    Route::get('/admin/products/{product}/edit', 'ProductsController@edit')->name('products.edit');
-    Route::post('/admin/products/{product}', 'ProductsController@update')->name('products.update');
-    Route::get('/admin/orders', 'OrdersController@index')->name('orders.index');
-    Route::get('/admin/orders/{order}/edit', 'OrdersController@edit')->name('orders.edit');
-    Route::post('/admin/orders/{order}', 'OrdersController@update')->name('orders.update');
-    Route::get('/admin/orders/{order}', 'OrdersController@show')->name('orders.show');
-    Route::delete('/admin/orders/{product}', 'OrdersController@destroy')->name('products.destroy');
+    Route::middleware('auth')->group(function () {
+        Route::middleware('admin')->group(function () {
+            Route::get('/admin/products', 'ProductsController@index')->name('products.list');
+            Route::get('/admin/products/create', 'ProductsController@create')->name('products.create');
+            Route::post('/admin/products', 'ProductsController@store')->name('products.store');
+            Route::delete('/admin/products/{product}', 'ProductsController@destroy')->name('products.destroy');
+            Route::get('/admin/products/{product}/edit', 'ProductsController@edit')->name('products.edit');
+            Route::post('/admin/products/{product}', 'ProductsController@update')->name('products.update');
+            Route::get('/admin/orders', 'OrdersController@index')->name('orders.index');
+            Route::get('/admin/orders/{order}/edit', 'OrdersController@edit')->name('orders.edit');
+            Route::post('/admin/orders/{order}', 'OrdersController@update')->name('orders.update');
+            Route::get('/admin/orders/{order}', 'OrdersController@show')->name('orders.show');
+            Route::delete('/admin/orders/{product}', 'OrdersController@destroy')->name('products.destroy');
+        });
+    });
 });
 Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
@@ -69,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/{user}', 'UserProfileController@update')->name('profile.update');
 });
 
+Route::get('/product/{product}', 'ProductController@show')->name('product.show');
 Route::get('/category', 'FrontendCategoryController@index')->name('category.index');
 Route::get('/category/{category}', 'FrontendCategoryController@getType')->name('category.type');
 Route::get('/search', 'HomeController@search')->name('search');

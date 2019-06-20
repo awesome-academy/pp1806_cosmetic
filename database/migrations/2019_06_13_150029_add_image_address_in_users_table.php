@@ -27,7 +27,7 @@ class AddImageAddressInUsersTable extends Migration
      */
     public function down() {
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumns('users', 'image', 'address')) {
+            if (Schema::hasColumns('users', ['image', 'address'])) {
                 $table->dropColumn(['image', 'address']);
             }
         });

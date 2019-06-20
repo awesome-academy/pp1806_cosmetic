@@ -141,7 +141,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary pull-right">{{ __('Create') }}</button>
+                                <button type="submit" class="btn btn-primary pull-right">{{ __('Update') }}</button>
                             </div>                          
                         </div>
                         <!-- /.box-footer -->                     

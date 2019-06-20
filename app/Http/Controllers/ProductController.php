@@ -141,4 +141,18 @@ class ProductController extends Controller
 
         return response()->json($result);
     }
+
+    public function show($id) {
+        $product = Product::find($id);
+        $recommendPros = Product::where('brand_id', $product->brand_id)->get();
+        $data = [];
+
+        if (!$product) {
+            return back()->with('status', __('products.not_found'));
+        }
+        
+        $data = ['product' => $product, 'recommendPros' => $recommendPros];
+
+        return view('product.show', $data);
+    }
 }
