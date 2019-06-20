@@ -1,5 +1,5 @@
 @extends('layouts.basic')
-@section('title', "{{ $product->name }}")
+@section('title', $product->name )
 @section('content')
 <div class="product-details"><!--product-details-->
     <div class="col-sm-5">

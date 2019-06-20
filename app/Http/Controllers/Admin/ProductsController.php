@@ -54,7 +54,7 @@ class ProductsController extends Controller
             $imageList[] = $image['file_name'];
         }
 
-        $data['image_list'] = implode(",",array_values($imageList));
+        $data['image_list'] = implode(',',array_values($imageList));
         try {
             $data['user_id'] = auth()->id();
             Product::create($data);
