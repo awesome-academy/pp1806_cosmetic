@@ -23,7 +23,12 @@
 
                             <div class="row">
                                 <div class="col-md-4 text-right"><strong>{{ __('user.image') }}</strong></div>
-                                <div class="col-md-6"><img src="{{ asset("/images/".$user->image) }}" height="80" width="80"/></div>
+                                @if(!$user->image)
+                                    <img src="https://www.lalintas.com/images/default_profile.png" height="80" width="80">
+                                @endif
+                                @if($user->image)
+                                    <img src="{{ asset("/images/".$user->image) }}" height="80" width="80"/>
+                                @endif
                             </div>
 
                             <div class="row">

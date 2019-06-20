@@ -2,7 +2,7 @@
 
 @section('content')
     {{--comment--}}
-    <div class="suntory-row-full-width" style="padding:  40px 0 40px 0; background-image: url({{ asset("/images/contact_banner.jpg") }}); background-size: cover;background-position: center;">
+    <div class="suntory-row-full-width" style="padding:  40px 0 40px 0; background-image: url('https://i.etsystatic.com/isbl/f7e893/27611735/isbl_1680x420.27611735_gmn4hkg8.jpg?version=0'); background-size: cover;background-position: center;">
         <div class="wpb_text_column wpb_content_element  abouts-heading-title">
             <div class="wpb_wrapper">
                 <h1 class="tu fs__20" style="text-align: center; font-size: 50px; color: #fff"><strong>{{ __('contact.bici') }}</strong></h1>

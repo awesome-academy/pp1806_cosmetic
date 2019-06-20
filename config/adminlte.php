@@ -145,12 +145,27 @@ return [
             ]
         ],
         [
+            'text'    => 'Brand',
+            'icon'    => 'book',
+            'submenu' => [
+                [
+                    'text' => 'Brand list',
+                    'url'  =>  'admin/brand',
+                    'icon' =>  'list',
+                ],
+                [
+                    'text' => 'Add new brand',
+                    'url'  => 'admin/brand/create',
+                ],
+            ]
+        ],
+        [
             'text'    => 'Users Manager',
             'icon'    => 'book',
             'submenu' => [
                 [
                     'text' => 'User list',
-                    'url'  =>  '/user',
+                    'url'  =>  'admin/user',
                     'icon' =>  'list',
                 ],
             ]
@@ -159,12 +174,12 @@ return [
         [
             'text'    => 'Admin Profile',
             'icon'    => 'user',
-            'url'     =>  '/user/83',
+            'url'     =>  '',
         ],
         [
             'text'    => 'Edit Profile',
             'icon'    => 'lock',
-            'url'     =>  '/user/83/edit',
+            'url'     =>  '',
         ],
     ],
 

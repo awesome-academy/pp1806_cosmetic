@@ -42,14 +42,23 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
         Route::post('/admin/category', 'Admin\CategoryController@store')->name('admin.category.store');
         Route::post('admin/category/{category}', 'Admin\CategoryController@update')->name('admin.category.update');
+        Route::get('admin/category/{category}', 'Admin\CategoryController@update')->name('admin.category.update');
         Route::get('admin/category/{category}/edit', 'Admin\CategoryController@edit')->name('admin.category.edit');
+//        Route::post('admin/category/{category}/edit', 'Admin\CategoryController@edit')->name('admin.category.edit');
         Route::delete('admin/category/{category}', 'Admin\CategoryController@destroy')->name('admin.category.destroy');
 
-        Route::get('/user', 'UserController@index')->name('user.index');
-        Route::get('/user/{user}', 'UserController@show')->name('user.show');
-        Route::delete('/user/{user}', 'UserController@destroy')->name('user.destroy');
-        Route::get('/user/{user}/edit', 'UserController@edit')->name('user.edit');
-        Route::post('/user/{user}', 'UserController@update')->name('user.update');
+        Route::get('admin/brand', 'Admin\BrandController@index')->name('admin.brand.index');
+        Route::get('/admin/brand/create', 'Admin\BrandController@create')->name('admin.brand.create');
+        Route::post('admin/brand/{brand}', 'Admin\BrandController@update')->name('admin.brand.update');
+        Route::get('admin/brand/{brand}/edit', 'Admin\BrandController@edit')->name('admin.brand.edit');
+        Route::post('/admin/brand', 'Admin\BrandController@store')->name('admin.brand.store');
+        Route::delete('admin/brand/{brand}', 'Admin\BrandController@destroy')->name('admin.brand.destroy');
+
+        Route::get('admin/user', 'Admin\UserController@index')->name('admin.user.index');
+        Route::get('admin/user/{user}', 'Admin\UserController@show')->name('admin.user.show');
+        Route::delete('admin/user/{user}', 'Admin\UserController@destroy')->name('admin.user.destroy');
+        Route::get('admin/user/{user}/edit', 'Admin\UserController@edit')->name('admin.user.edit');
+        Route::post('admin/user/{user}', 'Admin\UserController@update')->name('admin.user.update');
     });
     Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');

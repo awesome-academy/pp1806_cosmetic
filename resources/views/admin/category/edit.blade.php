@@ -3,55 +3,80 @@
 @section('title', 'Edit category')
 
 @section('content')
-    {{--<div class="card shadow mb-4">--}}
-        {{--<div class="card-header py-3">--}}
-            {{--<h6 class="m-0 font-weight-bold text-primary">{{__('category.cat')}}</h6>--}}
-        {{--</div>--}}
-        {{--<div class="row" style="margin: 5px">--}}
-            {{--<div class="col-lg-12">--}}
-                {{--<form role="form" action="{{ route('category.store') }}" method="post">--}}
-                    {{--@csrf--}}
-                    {{--<fieldset class="form-group">--}}
-                        {{--<label>{{__('category.name')}}</label>--}}
-                        {{--<input class="form-control" name="name" placeholder="{{__('category.add_cat_name')}}">--}}
-                    {{--</fieldset>--}}
-                    {{--<button type="submit" class="btn btn-success">{{__('category.submit')}}</button>--}}
-                    {{--<button type="reset" class="btn btn-primary">{{__('category.reset')}}</button>--}}
-                {{--</form>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Edit category') }}</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('admin.category.update', ['category' => $category->id]) }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-                                <div class="col-md-6">
-                                    <input id="name" type="text" value="{{ old('name', $category->name) }}" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" required autofocus>
-                                    @error('name')
-                                    <span>{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ __('Edit category') }}</h3>
                     </div>
+                    <form method="POST" action="{{ route('admin.category.update', ['category' => $category->id]) }}">
+                        @csrf
+                        <div class="box-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <div class="alert alert-success" style="display: none"></div>
+                            <div class="alert alert-warning" style="display: none;"></div>
+
+                                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }} ">
+                                    <label for="{{ $errors->has('name') ? 'inputError' : 'name' }}" class="col-sm-3 control-label">
+                                        @if ($errors->has('name'))
+                                            <i class="fa fa-times-circle-o"></i>
+                                        @endif
+                                        {{ __('Category Name') }}
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <input id="name" type="text" class="form-control" id="{{ $errors->has('name') ? 'inputError' : '' }}" name="name" value="{{ $category->name }}" autofocus>
+
+                                        @if ($errors->has('name'))
+                                            <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('parent_id') ? 'has-error' : '' }} ">
+                            <label for="{{ $errors->has('parent_id') ? 'inputError' : 'parent_id' }}" class="col-sm-3 control-label">
+                                @if ($errors->has('parent_id'))
+                                    <i class="fa fa-times-circle-o"></i>
+                                @endif
+                                {{ __('Parent_id') }}
+                            </label>
+
+                            <div class="col-sm-9">
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a Parent ID"
+
+                                        style="width: 100%;"id="{{ $errors->has('parent_id') ? 'inputError' : 'parent_id' }}" name="parent_id">
+
+                                    @foreach ($categories as $category)
+                                        @if($category->parent_id == 0)
+                                            <option value="{{ $category->id }}">{{ $category->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('parent_id'))
+                                    <span class="help-block">{{ $errors->first('parent_id') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary pull-right">{{ __('Update') }}</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ asset('js/admin_custom.js') }}"></script>
+@stop

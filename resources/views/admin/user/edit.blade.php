@@ -1,16 +1,30 @@
 @extends('layouts.app')
 
+@section('title', 'Edit user')
+
+@section('content_header')
+    <!-- <h1>Create new user</h1> -->
+@stop
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header"><strong>{{ __('user.edit') }}</strong></div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Edit new user</h3>
+                    </div>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data" class="form-horizontal">
-                            @csrf
-
+                    <form method="POST" action="{{ route('admin.user.update', $user->id) }}" enctype="multipart/form-data" class="form-horizontal">
+                        @csrf
+                        <div class="box-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <div class="alert alert-success" style="display: none"></div>
+                            <div class="alert alert-warning" style="display: none;"></div>
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('user.name') }}</label>
 
@@ -88,18 +102,22 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('user.update') }}
-                                    </button>
-                                </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('user.update') }}
+                                </button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ asset('js/admin_custom.js') }}"></script>
+@stop
