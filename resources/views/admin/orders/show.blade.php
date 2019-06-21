@@ -74,7 +74,7 @@
 
     <div class="row no-print">
         <div class="col-xs-12">
-            <a href="invoice-print.html" target="_blank" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-primary pull-right"><i class="fa fa-step-backwardt"></i>{{ __('order.order_back') }} </a>
         </div>
     </div>
     </section>

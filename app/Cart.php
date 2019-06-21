@@ -31,9 +31,12 @@ class Cart
         $this->totalPrice += $item->price;
     }
 
-    public function deleteCartItem($id) {
+    public function deleteCartItem($item, $id) {
         if ($this->items) {
            if (array_key_exists($id, $this->items)) {
+                $storedItem = $this->items[$id];
+                $this->totalQuantity -= $storedItem['quantity'];
+                $this->totalPrice -= $storedItem['price'];
                 unset($this->items[$id]);
                 return true;
             }

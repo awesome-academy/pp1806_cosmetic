@@ -11,5 +11,7 @@ return [
     'item' => 'Item',
     'price' => 'Price',
     'quantity' => 'Quantity',
-    'total' => 'Total'
+    'sub_total' => 'Sub Total',
+    'add_success' => 'Add product to cart successfully.',
+    'title' => 'Cosmetic Shopping Cart'
 ];

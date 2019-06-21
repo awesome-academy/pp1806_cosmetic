@@ -8,11 +8,14 @@ return [
     'method_payment' => 'Method Payment',
     'ship_cod' => 'Cash On Delivery',
     'address_ship' => 'Address Shipping',
+    'phone_number' => 'Phone Number',
     'full_name' => 'Full Name',
     'notes_shipping' => 'Notes Shipping',
-    'buy_now' => 'Buy now',
+    'complete_order' => 'Complete Order',
     'notes_placeholder' => 'Notes about your order, Special Notes for Delivery',
     'info_checkout' => 'Information Checkout',
     'create_fail' => 'Failed to create order',
-    'create_success' => 'Order successfully'
+    'create_success' => 'Order successfully',
+    'back' => ' Back To Cart',
+    'title' => 'Cosmetic Checkout'
 ];

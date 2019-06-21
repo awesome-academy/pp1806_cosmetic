@@ -23,6 +23,7 @@ $(document).ready(function(){
                            }
                         });
                         $('.alert-success').show().html('<p>' +  result.message + '</p>');
+                        $('.cart_sum_total_price').text(result.totalPrice + ' $');
                         $('.alert-warning').hide();
                     } else {
                         $('.alert-warning').show().html('<p>' +  result.message + '</p>');
@@ -57,8 +58,8 @@ $(document).ready(function(){
                         });
                 if (result.status) {
                     $( "input[name='quantity_" + productId + "']" ).val(++oldQty);
-                    $(".cart_total_price[data-product-id= " + productId + "]").text(result.itemPrice + ' VND');
-                    $('.cart_sum_total_price').text(result.totalPrice + ' VND');
+                    $(".cart_total_price[data-product-id= " + productId + "]").text(result.itemPrice + ' $');
+                    $('.cart_sum_total_price').text(result.totalPrice + ' $');
                     $('.alert-success').show().html('<p>' +  result.message + '</p>');
                     $('.alert-warning').hide();
                 } else {
@@ -104,8 +105,8 @@ $(document).ready(function(){
                             });
                     if (result.status) {
                         $( "input[name='quantity_" + productId + "']" ).val(--oldQty);
-                        $(".cart_total_price[data-product-id= " + productId + "]").text(result.itemPrice + ' VND');
-                        $('.cart_sum_total_price').text(result.totalPrice + ' VND');
+                        $(".cart_total_price[data-product-id= " + productId + "]").text(result.itemPrice + ' $');
+                        $('.cart_sum_total_price').text(result.totalPrice + ' $');
                         $('.alert-success').show().html('<p>' +  result.message + '</p>');
                         $('.alert-warning').hide();
                     } else {

@@ -126,12 +126,18 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $categories = Category::all();
         $brands = Brand::all();
+        $imageLists = explode(',', $product->image_list);
+        $data = ['product' => $product,
+            'categories' => $categories,
+            'brands' => $brands,
+            'imageLists' => $imageLists
+        ];
 
         if (!$product) {
             return redirect()->route('products.list')->with('status', __('products.not_found'));
         }
 
-        return view('admin.products.edit', ['product' => $product, 'categories' => $categories, 'brands' => $brands]);
+        return view('admin.products.edit', $data);
     }
 
     public function update(UpdateProduct $request, $id) {
@@ -142,6 +148,7 @@ class ProductsController extends Controller
             'price',
             'image',
             'image_list',
+            'image_delete'
         ]);
 
         if (isset($data['image'])) {            
@@ -155,19 +162,47 @@ class ProductsController extends Controller
         }
 
         if (isset($data['image_list'])) {
-            $imageList = $this->upload($data['image_list']);
+            $imageList = [];
 
-            if (!$imageList['status']) {
-                return back()->with('status', $imageList['msg']);
+            foreach ($data['image_list'] as $item) {
+                $image = $this->upload($item);
+
+                if (!$image['status']) {
+                    return back()->with('status', $image['msg']);
+                }
+
+                $imageList[] = $image['file_name'];
             }
 
-            $data['image_list'] = $imageList['file_name'];
+            $data['image_list'] = implode(',', array_values($imageList));
         }
 
         try {
             $product = Product::find($id);
             $oldImage = $product->image;
             $oldImageList = $product->image_list;
+
+            if (isset($data['image_list']) && !isset($data['image_delete'])) {
+                $data['image_list'] = $oldImageList . ',' . $data['image_list'];
+            }
+
+            if (isset($data['image_delete']) && !isset($data['image_list'])) {
+                $oldImageList = explode(',', $product->image_list);
+                $imagesDelete = explode(',', $data['image_delete']);
+                $newImageList = array_diff($oldImageList, $imagesDelete);
+                $data['image_list'] = implode(',', array_values($newImageList));
+                unset($data['image_delete']);
+            }
+
+            if (isset($data['image_list']) && isset($data['image_delete'])) {
+                $oldImageList = explode(',', $product->image_list);
+                $imagesDelete = explode(',', $data['image_delete']);
+                $newImageList = array_diff($oldImageList, $imagesDelete);
+                $newImageList = implode(',', array_values($newImageList));
+                $data['image_list'] = $newImageList . ',' . $data['image_list'];
+                unset($data['image_delete']);
+            }
+
             $product->update($data);
             
             if (isset($data['image'])) {
@@ -178,11 +213,14 @@ class ProductsController extends Controller
                 }
             }
 
-            if (isset($data['image_list'])) {
-                $imagePath = public_path() . '/' . config('products.image_path') . $oldImageList;
+            if (isset($data['image_delete'])) {
+                $imagesDelete = explode(',', $data['image_delete']);
+                foreach ($imagesDelete as $image) {
+                    $imagePath = public_path() . '/' . config('products.image_path') . $oldImageList;
 
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
                 }
             }
 

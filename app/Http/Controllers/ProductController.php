@@ -16,7 +16,7 @@ class ProductController extends Controller
         $cart->add($product, $product->id);
         session()->put('cart', $cart);
 
-        return redirect()->route('home');
+        return redirect()->back()->with('status', __('cart.add_success'));
     }
 
     public function getCart() {
@@ -43,9 +43,11 @@ class ProductController extends Controller
         if (session()->has('cart')) {
             $oldCart = session()->get('cart');
             $cart = new Cart($oldCart);
-            if ($cart->deleteCartItem($id)) {
+            $product = Product::find($id);
+
+            if ($cart->deleteCartItem($product, $id)) {
                 session()->put('cart', $cart);
-                $newCart = session()->get('cart');
+                $newCart = session()->get('cart');                
                 $items = $newCart->items;
                 if (empty($items)) {
                     session()->forget('cart');
@@ -55,10 +57,14 @@ class ProductController extends Controller
                         'message' => __('cart.delete_success')
                     ];
                 } else {
+                    $itemPrice = $newCart->items[$id]['price'];
+                    $totalPrice = $newCart->totalPrice;
                     $result = [
                         'status' => true,
                         'itemEmpty' => false,
-                        'message' => __('cart.delete_success')
+                        'message' => __('cart.delete_success'),
+                        'itemPrice' => $itemPrice,
+                        'totalPrice' => $totalPrice
                     ];
                 }
             } else {
@@ -151,7 +157,7 @@ class ProductController extends Controller
             return back()->with('status', __('products.not_found'));
         }
         
-        $imageLists = explode(",", $product->image_list);
+        $imageLists = explode(',', $product->image_list);
         $data = ['product' => $product, 'recommendPros' => $recommendPros, 'imageLists' => $imageLists];
 
         return view('product.show', $data);

@@ -26,5 +26,6 @@ return [
     'order_amount' => 'Amount',
     'order_total' => 'Total',
     'delete_success' => 'Delete Order Successfully.',
-    'delete_fail' => 'Delete Order Fail.'
+    'delete_fail' => 'Delete Order Fail.',
+    'order_back' => 'Back To List'
 ];

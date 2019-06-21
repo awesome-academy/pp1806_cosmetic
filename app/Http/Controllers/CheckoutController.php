@@ -9,6 +9,7 @@ use App\Order;
 use App\OrderProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\CheckOut;
 
 class CheckoutController extends Controller
 {
@@ -31,21 +32,22 @@ class CheckoutController extends Controller
         return view('shop.checkout', $data);
     }
 
-    public function store(Request $request) {
+    public function store(CheckOut $request) {
+        $validation = $request->validation;
          $data = $request->only([
             'address_shipping',
-            'description'
+            'description',
+            'phone_number'
         ]);
-
-        $cart = session()->get('cart');
-        $data['user_id'] = auth()->id();
-        $data['total_price'] = $cart->totalPrice;
-        $data['status'] = config('order.pending');
-
         try {
+            $cart = session()->get('cart');
+            $data['user_id'] = auth()->id();
+            $data['total_price'] = $cart->totalPrice;
+            $data['status'] = config('order.pending');
             $order = Order::create($data);
             $products = $cart->items;
             $orderProducts = [];
+
             foreach ($products as $product) {
                 $orderProducts[] = [
                     'order_id' => $order->id,
@@ -61,12 +63,10 @@ class CheckoutController extends Controller
                 return redirect()->route('home')->with('success', __('checkout.create_success'));
             }catch (\Exception $e) {
                 $order->delete();
-                dd("AA");
                 return back()->with('error', __('checkout.create_fail'));
             }
 
         }catch (\Exception $e) {
-            dd($data, config('order.pendding'));
             return back()->with('error', __('checkout.create_fail'));
         }
     }
