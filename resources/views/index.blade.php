@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', config('app.name'))
 @section('content')
     <div class="alert alert-success {{ !session('success') ? 'hidden' : ''  }}">
         {{ session('success') }}
@@ -30,10 +30,10 @@
                     </div>
                 </div>
             </div>
-            <div class="features_items"><!--features_items-->
+            <div class="features_items item"><!--features_items-->
                 <h2 class="title text-center">{{ __('products.features') }}</h2>
                 @foreach ($products as $product)
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 pad06">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                     <div class="productinfo text-center">
@@ -41,11 +41,10 @@
                                             <img src="https://hani.vn/wp-content/uploads/2019/01/trang-diem.jpg" height="250" width="250">
                                         @endif
                                         @if($product->image)
-                                            <img src="{{ asset("/images/".$product->image) }}" height="250" width="250"/>
+                                            <img src="{{ asset(config('products.image_path') . $product->image) }}" height="250" width="250"/>
                                         @endif
                                         <h2>{{ number_format($product->price) }} {{ __('products.pro_currency') }}</h2>
                                         <p><a href="{{ route('product.show', $product->id) }}" class="product-name">{{ $product->name }}</a></p>
-{{--                                        <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />--}}
                                         <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                     </div>
                             </div>
@@ -78,8 +77,8 @@
                                             <div class="productinfo text-center">
                                                 <img src="{{ asset(config('products.image_path') . $product->image) }}" alt="hihi" height="250" width="250" />
                                                 <h2>{{ number_format($product->price) }} {{ __('products.pro_currency') }}</h2>
-                                                <p>{{ $product->name }}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
+                                                <p><a href="{{ route('product.show', $product->id) }}" class="product-name">{{ $product->name }}</a></p>
+                                                <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
                                             </div>
                                             
                                         </div>
