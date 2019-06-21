@@ -8,34 +8,11 @@
                         <a href="/"><img src="{{ asset("images/logo-bici-1.png") }}" alt="BiCi Cosmetic" height="70px" width="105px" /></a>
                     </div>
                     <div class="btn-group pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">UK</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canadian Dollar</a></li>
-                                <li><a href="#">Pound</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-
                             <li>
                                 <a href="{{ route('product.shoppingCart') }}">
                                     <i class="fa fa-shopping-cart"></i> Cart
@@ -67,7 +44,7 @@
                                     </ul>
 
                                     @if(!Auth::user()->id)
-                                        <a href="{{ route('login') }}>
+                                        <a href="{{ route('login') }}">
                                     @endif
                                     <li><a href="{{ route('profile.show', Auth::user()->id) }}"><i class="fa fa-user"></i> My Profile</a></li>
                                 </li>

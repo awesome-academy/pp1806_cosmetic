@@ -1,4 +1,4 @@
-@extends('layouts.basic')
+@extends('layouts.master')
 @section('title', $product->name )
 @section('content')
 <div class="alert alert-success {{ !session('status') ? 'hidden' : ''  }}">

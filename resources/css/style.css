@@ -151,3 +151,6 @@
 .inputError .fa-times-circle-o, .help-block {
     color: #e02b27;
 }
+.item .pad06:nth-child(4n+1) {
+    clear: both;
+}

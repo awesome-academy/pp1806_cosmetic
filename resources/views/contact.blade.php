@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', config('app.name'))
 @section('content')
     {{--comment--}}
     <div class="suntory-row-full-width" style="padding:  40px 0 40px 0; background-image: url('https://i.etsystatic.com/isbl/f7e893/27611735/isbl_1680x420.27611735_gmn4hkg8.jpg?version=0'); background-size: cover;background-position: center;">

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', config('app.name'))
 @section('content')
     <div class="lineFix">
         <h4>{{ __('term.shipping_title') }}</h4>
