@@ -47,6 +47,12 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <a href="{{ route('product.shoppingCart') }}" class="btn btn-primary" role="button">{{ __('user.order') }}</a>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>

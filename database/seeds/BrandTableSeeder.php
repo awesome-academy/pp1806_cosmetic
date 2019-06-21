@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BrandTableSeeder extends Seeder
 {
@@ -10,6 +11,14 @@ class BrandTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        factory(App\Brand::class, 10)->create();
+//        factory(App\Brand::class, 10)->create();
+        DB::table('brands')->truncate();
+        DB::table('brands')->insert([
+            ['name' => 'L.A Girls'],
+            ['name' => 'The Body Shop'],
+            ['name' => 'The Ordinary'],
+            ['name' => 'Makeup Revolution'],
+            ['name' => 'E.L.F'],
+        ]);
     }
 }

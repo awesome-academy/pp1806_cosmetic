@@ -10,6 +10,6 @@ class SliderTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        factory(App\Slider::class, 10)->create();
+        factory(App\Slider::class, 1)->create();
     }
 }
