@@ -37,4 +37,5 @@ return [
     'pass'=> 'Password',
     'pass_confirm' => 'Confirm Password',
     'edit_user' => 'Edit Your Profile',
+    'order' => 'My Order',
 ];

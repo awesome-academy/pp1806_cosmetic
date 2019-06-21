@@ -13,7 +13,7 @@
             <div class="col-md-8">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Edit new brand</h3>
+                        <h3 class="box-title">{{ __('brand.edit_brand') }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

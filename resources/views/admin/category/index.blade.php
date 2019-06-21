@@ -3,7 +3,7 @@
 @section('title', 'Category List')
 
 @section('content_header')
-    <h1>Category List</h1>
+    <h1>{{ __('category.list') }}</h1>
 @stop
 
 @section('css')

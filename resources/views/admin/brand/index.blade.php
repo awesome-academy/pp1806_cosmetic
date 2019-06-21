@@ -3,7 +3,7 @@
 @section('title', 'Brand List')
 
 @section('content_header')
-    <h1>Brand List</h1>
+    <h1>{{ __('brand.list') }}</h1>
 @stop
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -33,4 +33,5 @@ return [
     'user_pro' => 'User Profile',
     'not_exist' => 'User Does Not Exist',
     'parent' => 'Parent ID',
+    'list' => 'Category List',
     ];
