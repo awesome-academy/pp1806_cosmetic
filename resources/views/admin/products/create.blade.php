@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Add product')
+@section('title', __('products.pro_create'))
 
 @section('content_header')
-    <!-- <h1>Create new product</h1> -->
+    <h1>{{ __('products.pro_create') }}</h1>
+@stop 
+@section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ asset('layouts/css/style.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
@@ -12,10 +16,6 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="box box-info">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Create new product</h3>
-                    </div>
-                    <!-- /.box-header -->
                     <!-- form start -->
                     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data" class="form-horizontal">
                         @csrf

@@ -11,7 +11,8 @@ class Order extends Model
         'total_price',
         'description',
         'status',
-        'address_shipping'
+        'address_shipping',
+        'phone_number'
     ];
 
     function user() {

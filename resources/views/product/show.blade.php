@@ -1,6 +1,9 @@
 @extends('layouts.basic')
 @section('title', $product->name )
 @section('content')
+<div class="alert alert-success {{ !session('status') ? 'hidden' : ''  }}">
+        {{ session('status') }}
+    </div>
 <div class="product-details"><!--product-details-->
     <div class="col-sm-5">
         <div class="view-product">
@@ -51,10 +54,7 @@
             <p>
                 <label>{{ __('products.pro_qty') }}:</label>
                 <span><input type="text" value="1" /></span>
-                <button type="button" class="btn btn-fefault cart">
-                    <i class="fa fa-shopping-cart"></i>
-                    {{ __('products.pro_add_to_cart') }}
-                </button>
+                <a href="{{ route('product.addToCart', $product->id) }}" class="btn btn-fefault cart add-to-cart"><i class="fa fa-shopping-cart"></i>{{ __('products.add_to_card') }}</a>
             </p>
             <p><b>{{ __('products.pro_avaible') }}:</b>{{ $product->quantity > 0 ? __('products.status.1') : __('products.status.2') }}</p>
             <p><b>{{ __('products.pro_brand') }}:</b>{{ $product->brand->name }}</p>

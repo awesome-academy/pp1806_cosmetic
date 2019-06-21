@@ -16,7 +16,7 @@ return [
     'features' => 'Features Items',
     'add_to_card' => 'Add to cart',
     'recommended' => 'recommended items',
-    'pro_currency' => 'VND',
+    'pro_currency' => '$',
     'pro_qty' => 'Quantity',
     'pro_avaible' => 'Availability',
     'pro_add_to_cart' => 'Add to cart',
@@ -24,5 +24,9 @@ return [
             1 => 'In Stock',
             2 => 'Out Stock'
         ],
-    'recommended' => 'Recommended Items'
+    'recommended' => 'Recommended Items',
+    'pro_edit' => 'Edit Product',
+    'pro_create' => 'Create new product',
+    'pro_list' => 'Product List',
+    'total_price' => 'Total'
 ];

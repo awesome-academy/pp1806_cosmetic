@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', __('checkout.title') )
 @section('content')
     <section id="cart_items">
         <div class="container">
@@ -33,7 +33,7 @@
                        @foreach($products as $product)
                            <tr class="row_{{ $product['item']->id }}">
                                 <td class="cart_product">
-                                    <a href=""><img src="{{ asset('layouts/images') }}/home/product1.jpg" alt=""></a>
+                                    <a href=""><img src="{{ asset(config('products.image_path') . $product['item']->image) }}" style="width: 200px" alt=""></a>
                                 </td>
                                 <td class="cart_description">
                                     <h4><a href="">{{ $product['item']->name }}</a></h4>
@@ -66,7 +66,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{ __('checkout.total') }}</td>
-                                        <td><span>{{ __($totalPrice) }}</span></td>
+                                        <td><p class="cart_sum_total_price" data-product-id="{{ $product['item']->id }}">{{ number_format($totalPrice) }} {{ __('products.pro_currency') }}</p></td></td>
                                     </tr>
                                 </table>
                             </td>
@@ -85,18 +85,56 @@
                         <div class="row row-centered">
                             <div class="col-sm-8 col-centered text-center">
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-3 control-label">{{ __('checkout.full_name') }}</label>
+                                    <label for="{{ $errors->has('name') ? 'inputError' : 'name' }}" class="col-sm-3 control-label inputError">
+                                        @if ($errors->has('name'))
+                                            <i class="fa fa-times-circle-o"></i> 
+                                        @endif
+                                        {{ __('checkout.full_name') }}
+                                    </label>
+
                                     <div class="col-sm-9">
-                                        <input type="text" id="name" class="form-control" value="{{ $user->name }}" readonly name="name">
-                                    </div>                                    
+                                        <input id="name" type="text" class="form-control" id="{{ $errors->has('name') ? 'inputError' : '' }}" name="name" value="{{ $user->name }}"  readonly>
+
+                                        @if ($errors->has('name'))
+                                        <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>                               
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-centered text-center">
+                                <div class="form-group">
+                                    <label for="{{ $errors->has('phone_number') ? 'inputError' : 'phone_number' }}" class="col-sm-3 control-label inputError">
+                                        @if ($errors->has('phone_number'))
+                                            <i class="fa fa-times-circle-o"></i> 
+                                        @endif
+                                        {{ __('checkout.phone_number') }}
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <input id="phone_number" type="text" class="form-control" id="{{ $errors->has('phone_number') ? 'inputError' : '' }}" name="phone_number" value="{{ $user->phone_number }}" >
+
+                                        @if ($errors->has('phone_number'))
+                                        <span class="help-block">{{ $errors->first('phone_number') }}</span>
+                                        @endif
+                                    </div>                    
                                 </div>
                             </div>
                             <div class="col-md-8 col-centered text-center">
                                 <div class="form-group">
-                                    <label for="address_shipping"  class="col-sm-3 control-label">{{ __('checkout.address_ship') }}</label>
+                                    <label for="{{ $errors->has('address_shipping') ? 'inputError' : 'address_shipping' }}" class="col-sm-3 control-label inputError">
+                                        @if ($errors->has('address_shipping'))
+                                            <i class="fa fa-times-circle-o"></i> 
+                                        @endif
+                                        {{ __('checkout.address_ship') }}
+                                    </label>
+
                                     <div class="col-sm-9">
-                                        <input type="text" id="address_shipping" class="form-control" required name="address_shipping">
-                                    </div>                                    
+                                        <input id="address_shipping" type="text" class="form-control" id="{{ $errors->has('address_shipping') ? 'inputError' : '' }}" name="address_shipping" value="{{ $user->address_shipping }}" >
+
+                                        @if ($errors->has('address_shipping'))
+                                        <span class="help-block">{{ $errors->first('address_shipping') }}</span>
+                                        @endif
+                                    </div>                                
                                 </div>
                             </div>
                             <div class="col-sm-8 col-centered text-center">
@@ -108,8 +146,9 @@
                                 </div>  
                             </div>      
                         </div>
-                        <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn btn-default check_out col align-self-center">{{ __('checkout.buy_now') }}</button>
+                        <div class="col-sm-12 text-center checkout-button">
+                            <a class="btn btn-default update" href="{{ route('product.shoppingCart') }}">{{ __('checkout.back') }}</a>
+                            <button type="submit" class="btn btn-default check_out col align-self-center">{{ __('checkout.complete_order') }}</button>
                         </div>
                     </form>                
                 </div>

@@ -1,11 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit product')
+@section('title', __('products.pro_edit'))
 
 @section('content_header')
     <!-- <h1>Create new product</h1> -->
 @stop
-
+@section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ asset('layouts/css/style.css') }}" rel="stylesheet">
+@stop
 @section('content')
 
     <div class="container">
@@ -13,7 +16,7 @@
             <div class="col-md-8">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Edit new product</h3>
+                    <h3 class="box-title">{{ __('products.pro_edit') }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -113,6 +116,10 @@
                                 </label>
 
                                 <div class="col-sm-9">
+                                    <div data-field-name="image">
+                                        <span href="#" class="remove-single-image" style="position:absolute;"><i class=" fa fa-remove "></i></span>
+                                        <img class="single-image" src="{{ asset(config('products.image_path') . $product->image ) }}" data-file-name="$product->image" data-id="1">
+                                    </div>
                                     <input type="file"  name="image" value="{{ old('image', $product->image) }}" class="form-control-file" id="image">
 
                                     @if ($errors->has('image'))
@@ -130,8 +137,18 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input type="file"  name="image_list" value="{{ old('image_list', $product->image_list) }}" class="form-control-file" id="image_list">
-
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                        @foreach ($imageLists as $key=>$img)                                 
+                                            <div class="img_settings_container" data-field-name="images" style="float:left;padding-right:15px;">
+                                                <span href="#" class="remove-multi-image" data-id="{{ $key }}" style="position: absolute;" data-file-name="{{ $img }}"><i class=" fa fa-remove "></i></span>
+                                                <img class="multi_image image_{{ $key }}" src="{{ asset(config('products.image_path') . $img ) }}">
+                                            </div>
+                                        @endforeach
+                                        </div>
+                                    </div>
+                                    <input type="text" name="image_delete" value="" hidden id="image-delete">
+                                    <input type="file" name="image_list[]" multiple id="image_list">
                                     @if ($errors->has('image_list'))
                                     <span class="help-block">{{ $errors->first('image_list') }}</span>
                                     @endif

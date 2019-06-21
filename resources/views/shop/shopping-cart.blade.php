@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-    Cosmetic Shopping Cart
-@endsection
+@section('title', __('cart.title'))
 
 @section('content')
     <section id="cart_items">
@@ -23,7 +21,7 @@
                             <td class="description"></td>
                             <td class="price">{{ __('cart.price') }}</td>
                             <td class="quantity">{{ __('cart.quantity') }}</td>
-                            <td class="total">{{ __('cart.total') }}</td>
+                            <td class="total">{{ __('cart.sub_total') }}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -38,7 +36,7 @@
                                     <p>Web ID: {{ $product['item']->id }}</p>
                                 </td>
                                 <td class="cart_price">
-                                    <p>{{ $product['item']->price }} VNĐ</p>
+                                    <p>{{ number_format($product['item']->price) }} {{ __('products.pro_currency') }}</p>
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
@@ -48,7 +46,7 @@
                                     </div>
                                 </td>
                                 <td class="cart_total">
-                                    <p class="cart_total_price" data-product-id="{{ $product['item']->id }}">{{ $product['price'] }} VNĐ</p>
+                                    <p class="cart_total_price" data-product-id="{{ $product['item']->id }}">{{ number_format($product['price']) }} {{ __('products.pro_currency') }}</p>
                                 </td>
                                 <td class="cart_delete">
                                     <a class="cart_quantity_delete" data-product-id="{{ $product['item']->id }}" role="button"><i class="fa fa-times"></i></a>
@@ -63,11 +61,11 @@
 
                             </td>
                             <td colspan="2">
-                                <table class="table table-condensed total-result">
+                                <table class="table table-condensed total-result shopping-cart">
                                     <tbody>
                                     <tr>
-                                        <td>Tổng :</td>
-                                        <td><p class="cart_sum_total_price" data-product-id="{{ $product['item']->id }}">{{ $totalPrice }} VNĐ</p></td>
+                                        <td>{{ __('products.total_price') }}:</td>
+                                        <td><p class="cart_sum_total_price" data-product-id="{{ $product['item']->id }}">{{ number_format($totalPrice) }} {{ __('products.pro_currency') }}</p></td>
                                     </tr>
                                     <tr>
                                         <td>

@@ -91,9 +91,10 @@ class OrdersController extends Controller
             'status'
         ]);
         
+
         try {
             $order = Order::find($id);
-            $order->update();
+            $order->update($data);
             return redirect()->route('orders.show', $order->id);
         } catch (\Exception $e) {
             return back()->with('status', __('order.update_fail'));
@@ -108,29 +109,6 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            $result = [
-                'status' => false,
-                'message' => __('order.not_found'),
-            ];
-        } else {
-            try {
-                $order->delete();
-                $result = [
-                    'status' => true,
-                    'message' => __('order.delete_success'),
-                ];
-            } catch (\Exception $e) {
-                $result = [
-                    'status' => true,
-                    'message' => __('order.delete_fail'),
-                    'error' => $e->getMessage()
-                ];
-            }
-        }
-
-        return response()->json($result);
+        
     }
 }

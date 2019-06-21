@@ -41,7 +41,7 @@
                                     <td>
                                         {{ $brands->name }}
                                     </td>
-                                    <td>
+                                    <td >
                                         <a href="{{ route('admin.brand.edit', ['brand' => $brands->id]) }}" class="btn btn-info" role="button">Edit</a>
                                         {{--<a href="products/{{ $product->id }}" class="btn btn-info" role="button">View</a>--}}
                                         {{--<a href="#" class="btn btn-danger btn-del-brand" role="button" data-brand-id="{{ $brands->id }}">Delete</a>--}}

@@ -1,12 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Product List')
+@section('title', __('products.pro_list'))
 
 @section('content_header')
-    <h1>Product List</h1>
+    <h1>{{ __('products.pro_list') }}</h1>
 @stop
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ asset('layouts/css/style.css') }}" rel="stylesheet">
 @stop
 @section('content')
 	<!-- Main content -->
@@ -14,10 +15,6 @@
 	   <div class="row">
 	       <div class="col-xs-12">
     	        <div class="box">
-        	        <div class="box-header">
-        	          <h3 class="box-title">Data Table With Full Features</h3>
-        	        </div>
-        	        <!-- /.box-header -->
         	        <div class="box-body">
                         @if (session('status'))
                             <div class="alert alert-warning" role="alert">
@@ -44,7 +41,7 @@
                                 <tr class="row_{{ $product->id }}">
                                     <th scope="row">{{ $product->id }}</th>
                                     <td>
-                                        <a href="/products/{{ $product->id }}">{{ $product->name }}</a>
+                                        <a href="{{ route('products.edit', $product->id) }}">{{ $product->name }}</a>
                                     </td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->brand->name }}</td>
@@ -52,8 +49,8 @@
                                     <td>
                                       {{ $product->user ? $product->user->name : 'Undefined' }}
                                     </td>
-                                    <td>
-                                        <a href="product/{{ $product->id }}/edit" class="btn btn-info" role="button">Edit</a>
+                                    <td class="action-admin">
+                                        <a href="products/{{ $product->id }}/edit" class="btn btn-info" role="button">Edit</a>
                                       <a href="#" class="btn btn-danger btn-del-product" role="button" data-product-id="{{ $product->id }}">Delete</a>
                                     </td>
                                 </tr>
